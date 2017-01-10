@@ -5,29 +5,46 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{::title}}</title>
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body>
-    <div>
-        <h1>
-        {{:: title}}
-        </h1>
+    <div class="container-fluid">
+        <nav>
+            <h1 class="title">{{:: title}}</h1>
+        </nav>
+        <div class="container-fluid">
+            <div class="col-xs-4">
+                <funny-flags player="carmelo"></funny-flags>
+            </div>
+            <div class="col-xs-4">
+                <funny-flags player="lubo"></funny-flags>
+            </div>
+            <div class="col-xs-4">
+                <funny-flags player="aina"></funny-flags>
+            </div>
+        </div>
         <country name="españa"></country>
         <country name="france"></country>
+        <country name="russia"></country>
         <country name="italy"></country>
         <country name="bg"></country>
-        <pre>{{spain | json}}</pre>
     </div>
     <!-- vendors -->
     <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="node_modules/game-tdd/src/Game.js"></script>
     <!-- app -->
     <script src="src/app.mod.js"></script>
     <script src="src/app.ctr.js"></script>
     <script src="src/game-tdd.fac.js"></script>
-    <script src="src/COUNTRIES.const.js"></script>
-    <script src="src/country.srv.js"></script>
-    <script src="src/country.dir.js"></script>
+    <script src="src/country/COUNTRIES.const.js"></script>
+    <script src="src/country/country.srv.js"></script>
+    <script src="src/country/country.dir.js"></script>
+    <!-- diversion con banderas -->
+    <script src="src/funny-flags/funny-flags.dir.js"></script>
 </body>
 
 </html>

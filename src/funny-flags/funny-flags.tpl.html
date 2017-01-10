@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">{{player.name}}</div>
+    </div>
+    <div class="panel-body text-center center-block">
+        <img class="img-circle" src="http://flags.fmcdn.net/data/flags/small/{{country.alpha2Code || 'ca'}}.png">
+    </div>
+    <div class="panel-footer">
+        <form name="frm" action="/" method="get" target="_blank" accept-charset="utf-8">
+            <div class="input-group">
+                <label class="input-group-addon">{{labels.countryName || 'país'}}</label>
+                <input type="text" class="form-control" ng-model="selectedCountry">
+                <span class="btn btn-primary input-group-addon"><i class="fa fa-flag"></i></span>
+            </div>
+        </form>
+    </div>
+</div>

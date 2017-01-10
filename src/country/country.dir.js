@@ -2,7 +2,7 @@ app.directive('country', ['CountryService', function(CountryService) {
     return {
         restrict: 'E',
         scope: {},
-        templateUrl: 'src/country.tpl.html',
+        templateUrl: 'src/country/country.tpl.html',
         link: function(scope, element, attrs) {
             scope.country = {};
             CountryService.getCountry(attrs.name).then(

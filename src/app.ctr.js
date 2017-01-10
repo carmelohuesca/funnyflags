@@ -1,6 +1,5 @@
 app.controller('AppController', ['$scope', 'CountryService', 'GameTDDFactory', function($scope, CountryService, GameTDDFactory) {
-    $scope.title = 'Diversión con Banderas';
-    
+    $scope.title = 'FunnyFlags';
     CountryService.getCountry('spain')
 	.then(function(country){
 		$scope.spain = country;
