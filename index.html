@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="FunnyFlags" ng-controller="AppController">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{::title}}</title>
+</head>
+
+<body>
+    <div>
+        <h1>
+        {{:: title}}
+        </h1>
+        <country name="españa"></country>
+        <country name="france"></country>
+        <country name="italy"></country>
+        <country name="bg"></country>
+        <pre>{{spain | json}}</pre>
+    </div>
+    <!-- vendors -->
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/game-tdd/src/Game.js"></script>
+    <!-- app -->
+    <script src="src/app.mod.js"></script>
+    <script src="src/app.ctr.js"></script>
+    <script src="src/game-tdd.fac.js"></script>
+    <script src="src/COUNTRIES.const.js"></script>
+    <script src="src/country.srv.js"></script>
+    <script src="src/country.dir.js"></script>
+</body>
+
+</html>
