@@ -5,4 +5,4 @@ Juego de FunnyFlags:
   ☐ del código alpha2Code se obtendrá una imagen aleatoria 
   ☐ El juego mostrará una imagen aleatoria de este servicio: 
     http://flags.fmcdn.net/data/flags/small/{{country.alpha2Code || 'es'}}.png
-  ☐ finalmente se comprobará con el nombre y si es correcto devolverá el resultado
+  ☐ finalmente se comprobará con el nombre y devolverá el resultado

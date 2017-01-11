@@ -1,16 +1,29 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <div class="panel-title">{{player.name}}</div>
+        <div class="panel-title">{{game.player.name}}</div>
     </div>
     <div class="panel-body text-center center-block">
-        <img class="img-circle" src="http://flags.fmcdn.net/data/flags/small/{{country.alpha2Code || 'ca'}}.png">
+        <img class="img-rounded" ng-error="game.randomImage()" src="{{game.src}}" alt="{{game.selectedCountry.name}}">
+        <div ng-hide="true" class="text-center"><small>    
+        {{game.selectedCountry.name}}
+        </small>
+        </div>
+        <h2>{{game.score}}/{{game.tries}}</h2>
+        <h4>{{game.help}}</h4>
+        <div ng-class="{'label-success':game.result,'label-danger':!game.result}" class="label">{{game.message}}</div>
+        <img src="{{game.previous}}" style="width:6%">
     </div>
     <div class="panel-footer">
-        <form name="frm" action="/" method="get" target="_blank" accept-charset="utf-8">
+        <form name="frm" ng-submit="game.checkFlag(game.countryName)" accept-charset="utf-8">
             <div class="input-group">
+                <span class="input-group-addon" ng-click="game.randomImage()">
+                <i class="fa fa-refresh"></i>
+                    </span>
                 <label class="input-group-addon">{{labels.countryName || 'país'}}</label>
-                <input type="text" class="form-control" ng-model="selectedCountry">
-                <span class="btn btn-primary input-group-addon"><i class="fa fa-flag"></i></span>
+                <input ng-disabled="game.tries<=0" type="text" class="form-control" ng-model="game.countryName">
+                <span class="input-group-addon" ng-class="{'badge-primary':game.result}">
+                <i class="fa fa-flag"></i>
+                </span>
             </div>
         </form>
     </div>

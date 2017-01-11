@@ -11,10 +11,10 @@
 
 <body>
     <div class="container-fluid">
-        <nav>
-            <h1 class="title">{{:: title}}</h1>
+        <nav class="navbar navbar-default navbar-light bg-faded">
+            <a class="navbar-brand" href="#">{{:: title}}</a>
         </nav>
-        <div class="container-fluid">
+        <div class="row">
             <div class="col-xs-4">
                 <funny-flags player="carmelo"></funny-flags>
             </div>
@@ -25,14 +25,17 @@
                 <funny-flags player="aina"></funny-flags>
             </div>
         </div>
-        <country name="españa"></country>
-        <country name="france"></country>
-        <country name="russia"></country>
-        <country name="italy"></country>
-        <country name="bg"></country>
+        <div class="row" ng-hide="true">
+            <country name="españa"></country>
+            <country name="france"></country>
+            <country name="russia"></country>
+            <country name="italy"></country>
+            <country name="bg"></country>
+        </div>
     </div>
     <!-- vendors -->
     <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="node_modules/game-tdd/src/Game.js"></script>
@@ -44,6 +47,7 @@
     <script src="src/country/country.srv.js"></script>
     <script src="src/country/country.dir.js"></script>
     <!-- diversion con banderas -->
+    <script src="src/funny-flags/funny-flags.js"></script>
     <script src="src/funny-flags/funny-flags.dir.js"></script>
 </body>
 
