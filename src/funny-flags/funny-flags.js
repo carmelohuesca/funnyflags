@@ -29,7 +29,7 @@ FunnyFlags.prototype.launchAllCountriesPromise = function() {
 FunnyFlags.prototype.successAllCountries = function(countries) {
     var countriesMapped = countries.data.map(function(country) {
         return {
-            name: country['name'],
+            name: country.translations.es,
             alpha2Code: country['alpha2Code'].toLowerCase()
         };
     });

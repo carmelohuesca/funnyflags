@@ -3,8 +3,8 @@
         <div class="panel-title">{{game.player.name}}</div>
     </div>
     <div class="panel-body text-center center-block">
-        <img class="img-rounded" src="{{game.src}}" alt="{{game.selectedCountry.name}}">
-        <div ng-hide="true" class="text-center"><small>    
+        <img ng-click="show=!show" class="img-rounded" src="{{game.src}}" alt="{{game.selectedCountry.name}}">
+        <div ng-hide="!show" class="text-center"><small>    
         {{game.selectedCountry.name}}
         </small>
         </div>
