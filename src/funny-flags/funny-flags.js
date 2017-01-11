@@ -35,15 +35,14 @@ FunnyFlags.prototype.doHelp = function(countryName) {
     });
     this.help = help.join(' ');
 };
-FunnyFlags.prototype.checkFlag = function(countryName) {
+FunnyFlags.prototype.checkFlag = function() {
     var result = false;
     var selectedName = this.selectedCountry.name.toLowerCase();
-    var ctrName = countryName.toLowerCase();
+    var ctrName = this.countryName.toLowerCase();
     if (this.tries > 0) {
 
         if (ctrName) {
             result = (selectedName === ctrName);
-            // result = selectedName.includes(ctrName);
         }
         if (result) {
             this.score++;

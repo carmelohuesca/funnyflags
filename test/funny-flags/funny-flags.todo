@@ -1,8 +1,9 @@
 Juego de FunnyFlags:
-  ☐ existirá un juego llamado FunnyFlags
-  ☐ este juego cargará una lista de paises de http://restcountries.eu/
-  ☐ cada país tendrá un name y un alpha2Code
-  ☐ del código alpha2Code se obtendrá una imagen aleatoria 
-  ☐ El juego mostrará una imagen aleatoria de este servicio: 
-    http://flags.fmcdn.net/data/flags/small/{{country.alpha2Code || 'es'}}.png
-  ☐ finalmente se comprobará con el nombre y devolverá el resultado
+  ✔ existirá un juego llamado FunnyFlags @done (17-01-11 08:09)
+  ✔ este juego cargará una lista de paises de http://restcountries.eu/ @done (17-01-11 08:09)
+  ✔ cada país tendrá un name y un alpha2Code @done (17-01-11 08:09)
+  ✔ tendrá un número de intentos y una puntuación @done (17-01-11 08:09)
+  ✔ del código alpha2Code se obtendrá una imagen aleatoria @done (17-01-11 08:09)
+  ✔ mostrara una leyenda del resultado @done (17-01-11 08:09)
+  ✔ El juego mostrará una imagen aleatoria de este servicio: @done (17-01-11 08:09)
+  ✔ finalmente se comprobará con el nombre y devolverá el resultado @done (17-01-11 08:09)
