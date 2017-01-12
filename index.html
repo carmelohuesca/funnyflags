@@ -11,21 +11,42 @@
 
 <body>
     <div class="container-fluid">
-        <nav class="navbar navbar-default navbar-light bg-faded">
-            <a class="navbar-brand" href="#">{{:: title}}</a>
+        <nav class="navbar navbar-primary navbar-light bg-faded">
+            <a class="navbar-brand" href="#"><i class="fa fa-flag"></i> {{:: title}}</a>
         </nav>
         <div class="row">
-            <div class="col-xs-4">
-                <funny-flags player="raquel"></funny-flags>
-            </div>
-            <div class="col-xs-4">
-                <funny-flags player="daniel"></funny-flags>
-            </div>
-            <div class="col-xs-4">
-                <funny-flags player="carmelo"></funny-flags>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Jugadores</div>
+                    <div class="panel-body">
+                        <div class="col-xs-12">
+                            <form name="frmPlayers" accept-charset="utf-8" ng-submit="addPlayer()">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        jugador
+                                    </div>
+                                    <input type="text" ng-model="player" class="form-control">
+                                </div>
+                            </form>
+                        </div>
+                        <div ng-repeat="(key, player) in players" class="col-xs-2">
+                            <div style="margin:3px" class="alert alert-info alert-dismissible" role="alert">
+                                <button type="button" class="close" ng-click="removePlayer(key)" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <strong><i class="fa fa-user"></i> {{player}}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row" ng-hide="true">
+        <div ng-if="true" class="row">
+            <div class="col-xs-4" ng-repeat="(key, player) in players">
+                <funny-flags player="{{player}}"></funny-flags>
+            </div>
+        </div>
+        <div class="row" ng-if="false">
             <country name="españa"></country>
             <country name="france"></country>
             <country name="russia"></country>
@@ -38,6 +59,7 @@
     <script src="node_modules/underscore/underscore-min.js"></script>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
     <script src="node_modules/game-tdd/src/Game.js"></script>
     <!-- app -->
     <script src="src/app.mod.js"></script>
@@ -46,6 +68,8 @@
     <script src="src/country/COUNTRIES.const.js"></script>
     <script src="src/country/country.srv.js"></script>
     <script src="src/country/country.dir.js"></script>
+    <script src="src/character/Special.js"></script>
+    <script src="src/character/special.fac.js"></script>
     <!-- diversion con banderas -->
     <script src="src/funny-flags/funny-flags.js"></script>
     <script src="src/funny-flags/funny-flags.dir.js"></script>

@@ -1,6 +1,7 @@
 var FunnyFlags = function(playerName) {
     this.player = this.player || {};
     this.player.name = playerName;
+    this.imageSrc ='assets/img/flags/small/';
     this.init();
 };
 
@@ -13,11 +14,19 @@ FunnyFlags.prototype.init = function() {
     this.message = '';
 };
 
+FunnyFlags.prototype.getCountries = function(){
+    return this.__proto__.countries;
+};
+
+FunnyFlags.prototype.setCountries = function(countries){
+     this.__proto__.countries = countries;
+};
+
 FunnyFlags.prototype.populate = function() {
-    this.__proto__.countries = [{
+    this.setCountries([{
         name: 'canada',
         alpha2Code: 'ca'
-    }];
+    }]);
 };
 
 FunnyFlags.prototype.launchAllCountriesPromise = function() {
@@ -33,7 +42,7 @@ FunnyFlags.prototype.successAllCountries = function(countries) {
             alpha2Code: country['alpha2Code'].toLowerCase()
         };
     });
-    this.__proto__.countries = countriesMapped;
+    this.getCountries() = countriesMapped;
     this.randomImage();
 };
 
@@ -42,16 +51,15 @@ FunnyFlags.prototype.failAllCountries = function(fail) {
 };
 
 FunnyFlags.prototype.randomImage = function() {
-    var imageSrc = 'http://flags.fmcdn.net/data/flags/small/';
     var randomCountry = this.randomCountry();
     this.selectedCountry = randomCountry;
     this.doHelp();
-    this.src = [imageSrc, randomCountry.alpha2Code, '.png'].join('');
+    this.src = [this.imageSrc, randomCountry.alpha2Code, '.png'].join('');
 };
 
 FunnyFlags.prototype.randomCountry = function() {
-    var indice = Math.floor(Math.random() * this.__proto__.countries.length);
-    var country = this.__proto__.countries[indice];
+    var indice = Math.floor(Math.random() * this.getCountries().length);
+    var country = this.getCountries()[indice];
     return country;
 };
 
@@ -59,14 +67,15 @@ FunnyFlags.prototype.doHelp = function() {
     var letters = this.selectedCountry.name.trim().split('');
     var help = [];
     _.each(letters, function(letter, index) {
-        (index < 2) ? help.push(letter): help.push('_');
+        (index < 1) ? help.push(letter): help.push('_');
     });
     this.help = help.join(' ');
 };
+
 FunnyFlags.prototype.checkFlag = function() {
     var result = false;
-    var selectedName = this.selectedCountry.name.toLowerCase();
-    var ctrName = this.countryName.toLowerCase();
+    var selectedName = new Special().clean(this.selectedCountry.name.toLowerCase());
+    var ctrName = new Special().clean(this.countryName.toLowerCase());
     if (this.tries > 0) {
 
         if (ctrName) {

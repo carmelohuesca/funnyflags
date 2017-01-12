@@ -10,6 +10,7 @@ app.directive('funnyFlags', ['CountryService', function(CountryService) {
             scope.game = new FunnyFlags(iAttrs.player || 'Jugador');
             scope.game.promise = allCountriesPromise;
             scope.game.launchAllCountriesPromise();
+            scope.game.letters = scope.$parent.letters;
         }
     };
 }])

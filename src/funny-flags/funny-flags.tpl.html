@@ -1,17 +1,17 @@
-<div class="panel panel-default">
+<div ng-cloak class="panel panel-default">
     <div class="panel-heading">
-        <div class="panel-title">{{game.player.name}}</div>
+        <div class="panel-title"><i class="fa fa-user"></i> {{game.player.name}}</div>
     </div>
     <div class="panel-body text-center center-block">
-        <img ng-click="show=!show" class="img-rounded" src="{{game.src}}" alt="{{game.selectedCountry.name}}">
+        <img ng-click="show=!show" class="img-rounded" ng-src="{{game.src}}" alt="{{game.selectedCountry.name}}">
         <div ng-hide="!show" class="text-center"><small>    
         {{game.selectedCountry.name}}
         </small>
         </div>
         <h2>{{game.score}}/{{game.tries}}</h2>
         <h4>{{game.help}}</h4>
-        <div ng-class="{'label-success':game.result,'label-danger':!game.result}" class="label">{{game.message}}</div>
-        <img src="{{game.previous}}" style="width:6%">
+        <div ng-if="game.message" ng-class="{'label-success':game.result,'label-danger':!game.result}" class="label">{{game.message}}</div>
+        <img ng-src="{{game.previous}}" style="width:6%">
     </div>
     <div class="panel-footer">
         <form name="frm" ng-submit="game.checkFlag()" accept-charset="utf-8">

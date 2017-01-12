@@ -1,1 +1,1 @@
-var app = angular.module('FunnyFlags', []);
+var app = angular.module('FunnyFlags', ['LocalStorageModule']);

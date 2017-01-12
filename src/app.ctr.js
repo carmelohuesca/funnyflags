@@ -1,17 +1,21 @@
-app.controller('AppController', ['$scope', 'CountryService', 'GameTDDFactory', function($scope, CountryService, GameTDDFactory) {
+app.controller('AppController', ['$scope', 'CountryService', 'localStorageService', 'GameTDDFactory', function($scope, CountryService, localStorageService, GameTDDFactory) {
     $scope.title = 'FunnyFlags';
-    CountryService.getCountry('spain')
-	.then(function(country){
-		$scope.spain = country;
-	}, function (fail){
-		$scope.spain = 'no se encuentra el pais';
-	});
 
-    CountryService.getAllCountries()
-	.then(function(countries){
-		$scope.countries = countries;
-	}, function (fail){
-		$scope.countries = 'no se encuentran los paises';
-	});
+    $scope.bind = localStorageService.bind($scope, 'players');
+
+    $scope.addPlayer = function() {
+        if ($scope.player) {
+            $scope.players = ($scope.players) ? $scope.players : [];
+            $scope.players.push($scope.player);
+            $scope.players = _.uniq($scope.players);
+            $scope.player = undefined;
+            localStorageService.set('players', $scope.players);
+            $scope.bind = localStorageService.bind($scope, 'players');
+        }
+    };
+
+    $scope.removePlayer = function(index) {
+        $scope.players.splice(index, 1);
+    };
 
 }]);

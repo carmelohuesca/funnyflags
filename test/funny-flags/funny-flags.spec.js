@@ -4,7 +4,7 @@ describe('Juego de FunnyFlags:', function() {
         expect(new FunnyFlags()).toBeDefined();
     });
 
-    it('este juego cargará una lista de paises de http://restcountries.eu/', function() {
+    it('este juego cargará una lista de paises', function() {
         expect(new FunnyFlags('test').__proto__.countries.length).toBe(1);
     });
 
@@ -21,13 +21,13 @@ describe('Juego de FunnyFlags:', function() {
     it('del código alpha2Code se obtendrá una imagen aleatoria ', function() {
         var game = new FunnyFlags('test');
         game.randomImage();
-        expect(game.src).toEqual('http://flags.fmcdn.net/data/flags/small/ca.png');
+        expect(game.src).toEqual([game.imageSrc,'ca.png'].join(''));
     });
 
     it('El juego mostrará una imagen aleatoria de este servicio: ', function() {
         var game = new FunnyFlags('test');
         game.randomImage();
-        expect(game.src).toEqual('http://flags.fmcdn.net/data/flags/small/ca.png');
+        expect(game.src).toEqual([game.imageSrc,'ca.png'].join(''));
     });
 
     it('mostrará una leyenda del resultado', function() {
