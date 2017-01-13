@@ -1,4 +1,4 @@
-app.controller('AppController', ['$scope', 'CountryService', 'localStorageService', 'GameTDDFactory', function($scope, CountryService, localStorageService, GameTDDFactory) {
+app.controller('AppController', ['$scope', 'localStorageService', function($scope, localStorageService) {
     $scope.title = 'FunnyFlags';
 
     $scope.bind = localStorageService.bind($scope, 'players');
@@ -8,9 +8,9 @@ app.controller('AppController', ['$scope', 'CountryService', 'localStorageServic
             $scope.players = ($scope.players) ? $scope.players : [];
             $scope.players.push($scope.player);
             $scope.players = _.uniq($scope.players);
-            $scope.player = undefined;
             localStorageService.set('players', $scope.players);
             $scope.bind = localStorageService.bind($scope, 'players');
+            $scope.player = undefined;
         }
     };
 

@@ -1,7 +1,7 @@
 var FunnyFlags = function(playerName) {
     this.player = this.player || {};
     this.player.name = playerName;
-    this.imageSrc ='assets/img/flags/small/';
+    this.imageSrc = 'assets/img/flags/small/';
     this.init();
 };
 
@@ -14,12 +14,12 @@ FunnyFlags.prototype.init = function() {
     this.message = '';
 };
 
-FunnyFlags.prototype.getCountries = function(){
+FunnyFlags.prototype.getCountries = function() {
     return this.__proto__.countries;
 };
 
-FunnyFlags.prototype.setCountries = function(countries){
-     this.__proto__.countries = countries;
+FunnyFlags.prototype.setCountries = function(countries) {
+    this.__proto__.countries = countries;
 };
 
 FunnyFlags.prototype.populate = function() {
@@ -42,7 +42,7 @@ FunnyFlags.prototype.successAllCountries = function(countries) {
             alpha2Code: country['alpha2Code'].toLowerCase()
         };
     });
-    this.getCountries() = countriesMapped;
+    this.setCountries(countriesMapped);
     this.randomImage();
 };
 
@@ -64,31 +64,41 @@ FunnyFlags.prototype.randomCountry = function() {
 };
 
 FunnyFlags.prototype.doHelp = function() {
-    var letters = this.selectedCountry.name.trim().split('');
-    var help = [];
-    _.each(letters, function(letter, index) {
-        (index < 1) ? help.push(letter): help.push('_');
-    });
-    this.help = help.join(' ');
+    if (this.isValidCountryName(this.selectedCountry.name)) {
+        var letters = this.selectedCountry.name.trim().split('');
+        var help = [];
+        _.each(letters, function(letter, index) {
+            (index < 1) ? help.push(letter): help.push('_');
+        });
+        this.help = help.join(' ');
+    }
 };
 
 FunnyFlags.prototype.checkFlag = function() {
     var result = false;
-    var selectedName = new Special().clean(this.selectedCountry.name.toLowerCase());
-    var ctrName = new Special().clean(this.countryName.toLowerCase());
-    if (this.tries > 0) {
-
-        if (ctrName) {
-            result = (selectedName === ctrName);
+    var selectedName = '';
+    var ctrName = '';
+    if (this.isValidCountryName(this.selectedCountry.name) && this.isValidCountryName(this.countryName)) {
+        selectedName = new Special().clean(this.selectedCountry.name.toLowerCase());
+        ctrName = new Special().clean(this.countryName.toLowerCase());
+        if (this.tries > 0) {
+            if (ctrName) {
+                result = (selectedName === ctrName);
+            }
+            if (result) {
+                this.score++;
+            }
+            this.tries--;
+            this.previous = JSON.parse(JSON.stringify(this.src));
+            this.countryName = undefined;
+            this.result = result;
+            this.message = [ctrName, selectedName].join(' vs ');
         }
-        if (result) {
-            this.score++;
-        }
-        this.tries--;
-        this.previous = JSON.parse(JSON.stringify(this.src));
-        this.randomImage();
-        this.countryName = undefined;
-        this.result = result;
-        this.message = [ctrName, selectedName].join(' vs ');
     }
+    this.randomImage();
+};
+
+FunnyFlags.prototype.isValidCountryName = function(countryName) {
+    var invalid = _.isUndefined(countryName) || _.isNull(countryName);
+    return !invalid;
 };

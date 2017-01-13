@@ -42,8 +42,8 @@
             </div>
         </div>
         <div ng-if="true" class="row">
-            <div class="col-xs-4" ng-repeat="(key, player) in players">
-                <funny-flags player="{{player}}"></funny-flags>
+            <div class="col-xs-4" ng-repeat="player in players">
+                <funny-flags player="{{::player}}"></funny-flags>
             </div>
         </div>
         <div class="row" ng-if="false">

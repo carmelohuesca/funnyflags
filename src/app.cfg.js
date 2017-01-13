@@ -1,6 +1,6 @@
 app.config(['localStorageServiceProvider', function(localStorageServiceProvider) {
     localStorageServiceProvider
-        .setPrefix('fwf')
+        .setPrefix('ls')
         .setStorageType('localStorage')
         .setNotify(true, true);
 }]);
